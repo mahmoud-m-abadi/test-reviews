@@ -46,7 +46,7 @@ class ProductController extends Controller
     public function show(Product $product): ProductResource
     {
         return new ProductResource(
-            $product
+            $product->load(['reviewComments', 'reviewVotes'])
         );
     }
 

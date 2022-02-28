@@ -23,7 +23,7 @@ trait HasApprovedTrait
      */
     public function changeApprove(bool $approve = true): HasApprovedInterface
     {
-        $this->setApprove($approve);
+        $this->setApproved($approve);
         $this->save();
 
         return $this;

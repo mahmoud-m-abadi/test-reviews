@@ -7,6 +7,7 @@ use App\Interfaces\Models\ProductInterface;
 use App\Interfaces\Models\ProviderInterface;
 use App\Interfaces\Models\UserInterface;
 use App\Models\Review\ReviewComment;
+use App\Models\Review\ReviewVote;
 use App\Traits\ApprovedReviewTrait;
 use App\Traits\HasCreatorIdTrait;
 use App\Traits\HasEnableCommentTrait;
@@ -46,9 +47,17 @@ class Product extends BaseModel implements ProductInterface
     /**
      * @return HasMany
      */
-    public function reviews(): HasMany
+    public function reviewComments(): HasMany
     {
         return $this->hasMany(ReviewComment::class);
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function reviewVotes(): HasMany
+    {
+        return $this->hasMany(ReviewVote::class);
     }
 
     /**

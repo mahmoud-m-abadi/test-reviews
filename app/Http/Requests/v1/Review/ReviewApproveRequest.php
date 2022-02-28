@@ -3,6 +3,7 @@
 namespace App\Http\Requests\v1\Review;
 
 use App\Base\BaseRequest;
+use App\Interfaces\Models\ReviewCommentInterface;
 
 class ReviewApproveRequest extends BaseRequest
 {
@@ -12,7 +13,10 @@ class ReviewApproveRequest extends BaseRequest
     public function rules(): array
     {
         return [
-
+            ReviewCommentInterface::APPROVED => [
+                'required',
+                'boolean',
+            ]
         ];
     }
 }

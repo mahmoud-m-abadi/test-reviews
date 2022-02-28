@@ -1,15 +1,16 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\v1\Review\ReviewCommentController;
+use App\Http\Controllers\api\v1\Review\ReviewVoteController;
 
 /** Review Comments */
-Route::put('reviews-comments/{review}/approve', [ReviewCommentController::class, 'approve'])
+Route::put('review-comments/{reviewComment}/approve', [ReviewCommentController::class, 'approve'])
     ->name('reviews.comments.approve');
-Route::resource('reviews-comments', ReviewCommentController::class)
+Route::resource('review-comments', ReviewCommentController::class)
     ->only(['index']);
 
 /** Review Votes */
-Route::put('reviews-votes/{review}/approve', [ReviewVoteController::class, 'approve'])
-    ->name('reviews.votes.approve');
-Route::resource('reviews-votes', ReviewVoteController::class)
+Route::put('review-votes/{reviewVote}/approve', [ReviewVoteController::class, 'approve'])
+    ->name('review.votes.approve');
+Route::resource('review-votes', ReviewVoteController::class)
     ->only(['index']);

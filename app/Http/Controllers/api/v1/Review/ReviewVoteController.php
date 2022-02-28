@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\v1\Review\AddReviewVoteRequest;
 use App\Http\Requests\v1\Review\ReviewApproveRequest;
 use App\Http\Resources\v1\Review\ReviewVoteResource;
-use App\Interfaces\Models\ProductInterface;
 use App\Interfaces\Models\ReviewVoteInterface;
+use App\Models\Product;
+use App\Models\Review\ReviewVote;
 use App\Repositories\Review\ReviewVoteRepository;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use function collect;
+use Illuminate\Http\Response;
 
 class ReviewVoteController extends Controller
 {
@@ -33,26 +35,39 @@ class ReviewVoteController extends Controller
         );
     }
 
+    /**
+     * @param ReviewVote $reviewVote
+     * @param ReviewApproveRequest $request
+     *
+     * @return JsonResponse
+     */
     public function approve(
-        ReviewVoteInterface $review,
+        ReviewVote $reviewVote,
         ReviewApproveRequest   $request
     )
     {
-        $this->repository->changeApprove($request->get(ReviewVoteInterface::APPROVED));
+        $this->repository->changeApprove(
+            $reviewVote,
+            $request->get(ReviewVoteInterface::APPROVED)
+        );
+
+        return $this->getResponse(null, Response::HTTP_NO_CONTENT);
     }
 
     /**
-     * @param ProductInterface $product
+     * @param Product $product
      * @param AddReviewVoteRequest $request
+     *
      * @return ReviewVoteResource
      */
     public function clientAddReview(
-        ProductInterface $product,
+        Product $product,
         AddReviewVoteRequest $request
     )
     {
         $result = $this->repository->store(
             collect($request->validated())
+                ->put(ReviewVoteInterface::USER_ID, 1)
                 ->put(ReviewVoteInterface::PRODUCT_ID, $product->getId())
                 ->toArray()
         );

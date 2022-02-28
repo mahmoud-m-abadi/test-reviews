@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources\v1;
 
+use App\Http\Resources\v1\Review\ReviewCommentResource;
+use App\Http\Resources\v1\Review\ReviewVoteResource;
 use App\Interfaces\Models\ProductInterface;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -24,21 +26,54 @@ class ProductResource extends JsonResource
             ProductInterface::NAME => $this->getName(),
             ProductInterface::PRICE => $this->getPrice() ?? 0,
 
+            /** Show in the Manager Section */
+            ProductInterface::PUBLISHED => $this->when(
+                $request->isManager(),
+                $this->getPublished() == 1
+            ),
+            ProductInterface::ENABLE_VOTE => $this->when(
+                $request->isManager(),
+                $this->getEnableVote() == 1
+            ),
+            ProductInterface::ENABLE_COMMENT => $this->when(
+                $request->isManager(),
+                $this->getEnableComment() == 1
+            ),
+            ProductInterface::ENABLE_REVIEW_FOR_BUYER => $this->when(
+                $request->isManager(),
+                $this->getEnableReviewForBuyer() == 1
+            ),
+            'reviewComments' => ReviewCommentResource::collection(
+                $this->whenLoaded('reviewComments')
+            ),
+            'reviewVotes' => ReviewVoteResource::collection(
+                $this->whenLoaded('reviewVotes')
+            ),
+
+            /** Show in the Client Section */
             'approvedReviewComments' => $this->when(
-                !is_null( $this->approvedReviewComments),
+                $request->isClient(),
                 $this->approvedReviewComments
             ),
             'approvedReviewCommentsCount' => $this->when(
-                !is_null( $this->approvedReviewCommentsCount),
-                $this->approvedReviewCommentsCount
+                $request->isClient(),
+                $this->approved_review_comments_count
             ),
-            'approvedVotesAvg' => $this->avgApprovedReviewVotes(),
-
-            'userCanAddReviewComment' => $this->userCanAddReviewComment(
-                $userRepository->find($userId)
+            'approvedVotesAvg' => $this->when(
+                $request->isClient(),
+                $this->avgApprovedReviewVotes()
             ),
-            'userCanAddReviewVote' => $this->userCanAddReviewVote(
-                $userRepository->find($userId)
+            'userCanAddReviewComment' => $this->when(
+                $request->isClient(),
+                $this->userCanAddReviewComment(
+                    $userRepository->find($userId)
+                )
+            ),
+            'userCanAddReviewVote' => $this->when(
+                $request->isClient(),
+                $this->userCanAddReviewVote(
+                    $userRepository->find($userId)
+                )
             ),
         ];
     }

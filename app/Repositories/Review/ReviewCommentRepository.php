@@ -49,12 +49,16 @@ class ReviewCommentRepository extends BaseRepository
     }
 
     /**
+     * @param ReviewComment $reviewComment
      * @param bool $value Value.
      *
      * @return ReviewCommentInterface
      */
-    public function changeApprove(bool $value): ReviewCommentInterface
+    public function changeApprove(
+        ReviewComment $reviewComment,
+        bool $value
+    ): ReviewCommentInterface
     {
-        return $this->model->changeApprove($value);
+        return $reviewComment->changeApprove($value);
     }
 }

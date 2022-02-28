@@ -4,9 +4,7 @@ namespace App\Repositories\Review;
 
 use App\Base\BaseRepository;
 use App\Interfaces\Models\BaseModelInterface;
-use App\Interfaces\Models\ReviewCommentInterface;
 use App\Interfaces\Models\ReviewVoteInterface;
-use App\Models\Review\ReviewComment;
 use App\Models\Review\ReviewVote;
 use App\Repositories\ProductRepository;
 use App\Repositories\UserRepository;
@@ -50,12 +48,13 @@ class ReviewVoteRepository extends BaseRepository
     }
 
     /**
+     * @param ReviewVoteInterface $reviewVote
      * @param bool $value Value.
      *
-     * @return ReviewCommentInterface
+     * @return ReviewVoteInterface
      */
-    public function changeApprove(bool $value): ReviewCommentInterface
+    public function changeApprove(ReviewVoteInterface $reviewVote, bool $value): ReviewVoteInterface
     {
-        return $this->model->changeApprove($value);
+        return $reviewVote->changeApprove($value);
     }
 }

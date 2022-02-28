@@ -28,6 +28,8 @@ class ReviewComment extends BaseModel implements ReviewCommentInterface
         self::APPROVED,
     ];
 
+    public $timestamps = false;
+
     /**
      * @param UserInterface $user
      * @param ProductInterface $product
@@ -49,6 +51,7 @@ class ReviewComment extends BaseModel implements ReviewCommentInterface
         $item->setTitle($title);
         $item->setBody($body);
         $item->setApproved($approved);
+        $item->setCreatedAt(now()->format('Y-m-d H:i:s'));
         $item->save();
 
         return $item;

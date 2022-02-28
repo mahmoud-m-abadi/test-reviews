@@ -122,7 +122,7 @@ abstract class BaseRepository
         return $this->model::when(
                 $paginate,
                 fn(Builder $builder) => $builder->paginate(),
-                fn(Builder $builder) => $builder->all()
+                fn(Builder $builder) => $builder->get()
             );
     }
 }

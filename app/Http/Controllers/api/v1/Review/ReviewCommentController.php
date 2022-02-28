@@ -8,8 +8,12 @@ use App\Http\Requests\v1\Review\ReviewApproveRequest;
 use App\Http\Resources\v1\Review\ReviewCommentResource;
 use App\Interfaces\Models\ProductInterface;
 use App\Interfaces\Models\ReviewCommentInterface;
+use App\Models\Product;
+use App\Models\Review\ReviewComment;
 use App\Repositories\Review\ReviewCommentRepository;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Response;
 
 class ReviewCommentController extends Controller
 {
@@ -32,26 +36,38 @@ class ReviewCommentController extends Controller
         );
     }
 
+    /**
+     * @param ReviewComment $reviewComment
+     * @param ReviewApproveRequest $request
+     *
+     * @return JsonResponse
+     */
     public function approve(
-        ReviewCommentInterface $review,
+        ReviewComment $reviewComment,
         ReviewApproveRequest   $request
     )
     {
-        $this->repository->changeApprove($request->get(ReviewCommentInterface::APPROVED));
+        $this->repository->changeApprove(
+            $reviewComment,
+            $request->get(ReviewCommentInterface::APPROVED)
+        );
+
+        return $this->getResponse(null, Response::HTTP_NO_CONTENT);
     }
 
     /**
-     * @param ProductInterface $product
+     * @param Product $product
      * @param AddReviewCommentRequest $request
      * @return ReviewCommentResource
      */
     public function clientAddReview(
-        ProductInterface $product,
+        Product $product,
         AddReviewCommentRequest $request
     )
     {
         $result = $this->repository->store(
             collect($request->validated())
+                ->put(ReviewCommentInterface::USER_ID, 1)
                 ->put(ReviewCommentInterface::PRODUCT_ID, $product->getId())
                 ->toArray()
         );

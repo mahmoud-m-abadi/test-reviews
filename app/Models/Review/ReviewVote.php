@@ -32,6 +32,8 @@ class ReviewVote extends BaseModel implements ReviewVoteInterface
         self::APPROVED,
     ];
 
+    public $timestamps = false;
+
     /**
      * @param UserInterface $user
      * @param ProductInterface $product
@@ -50,6 +52,7 @@ class ReviewVote extends BaseModel implements ReviewVoteInterface
         $item->setProductId($product->getId());
         $item->setRating($rating);
         $item->setApproved($approved);
+        $item->setCreatedAt(now()->format('Y-m-d H:i:s'));
         $item->save();
 
         return $item;
