@@ -8,4 +8,4 @@ Route::get('products', [ProductController::class, 'clientProductList'])
     ->name('products.clientProductList');
 
 Route::get('products/{product}', [ProductController::class, 'clientProductShow'])
-    ->name('reviews.clientProductShow');
+    ->name('products.clientProductShow');

@@ -128,13 +128,13 @@
 											}
 										},
 										"url": {
-											"raw": "{{URL}}manager/review-comments/4/approve",
+											"raw": "{{URL}}manager/review-comments/23/approve",
 											"host": [
 												"{{URL}}manager"
 											],
 											"path": [
 												"review-comments",
-												"4",
+												"23",
 												"approve"
 											]
 										}
@@ -295,6 +295,86 @@
 											],
 											"cookie": [],
 											"body": null
+										},
+										{
+											"name": "ReviewCommentApprove record not foun",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"approved\": false\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{URL}}manager/review-votes/23/approve",
+													"host": [
+														"{{URL}}manager"
+													],
+													"path": [
+														"review-votes",
+														"23",
+														"approve"
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "localhost:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 01 Mar 2022 14:26:42 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 01 Mar 2022 14:26:42 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.0.15"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "57"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": null,\n    \"error\": true,\n    \"ex-message\": \"record_not_found\"\n}"
 										}
 									]
 								}
@@ -584,6 +664,86 @@
 											],
 											"cookie": [],
 											"body": null
+										},
+										{
+											"name": "ReviewVoteApprove record not found",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"approved\": false\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{URL}}manager/review-votes/23/approve",
+													"host": [
+														"{{URL}}manager"
+													],
+													"path": [
+														"review-votes",
+														"23",
+														"approve"
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "localhost:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 01 Mar 2022 14:26:42 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 01 Mar 2022 14:26:42 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.0.15"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "57"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": null,\n    \"error\": true,\n    \"ex-message\": \"record_not_found\"\n}"
 										}
 									]
 								}
@@ -1775,7 +1935,7 @@
 					},
 					"response": [
 						{
-							"name": "ProductAddReviewComment 200",
+							"name": "ProductAddReviewComment 201",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -1933,6 +2093,86 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"data\": null,\n    \"errors\": {\n        \"title\": [\n            \"The title must be at least 3 characters.\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "ProductAddReviewComment 422 when user does not allow to add add review comment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Hi test another 2\",\n    \"body\": \"This is a best product\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}client/products/1/add-review-comment",
+									"host": [
+										"{{URL}}client"
+									],
+									"path": [
+										"products",
+										"1",
+										"add-review-comment"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 01 Mar 2022 13:55:44 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 01 Mar 2022 13:55:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.15"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"errors\": {\n        \"title\": [\n            \"User can not add review comment for this product\"\n        ]\n    }\n}"
 						}
 					]
 				},
@@ -2050,7 +2290,7 @@
 							"body": "{\n    \"data\": null,\n    \"errors\": {\n        \"rating\": [\n            \"The rating must be between 1 and 5.\"\n        ]\n    }\n}"
 						},
 						{
-							"name": "ProductAddReviewVote 200",
+							"name": "ProductAddReviewVote 201",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -2128,6 +2368,86 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"user_id\": 1,\n        \"product_id\": 1,\n        \"rating\": 4,\n        \"approved\": false\n    }\n}"
+						},
+						{
+							"name": "ProductAddReviewVote 422 when user does not allow to add add review vote",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"rating\": 4\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}client/products/1/add-review-vote",
+									"host": [
+										"{{URL}}client"
+									],
+									"path": [
+										"products",
+										"1",
+										"add-review-vote"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 01 Mar 2022 13:57:14 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 01 Mar 2022 13:57:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.15"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"errors\": {\n        \"rating\": [\n            \"User can not add review vote for this product\"\n        ]\n    }\n}"
 						}
 					]
 				}

@@ -19,7 +19,7 @@ class ProductResource extends JsonResource
     public function toArray($request)
     {
         $userRepository = app()->make(UserRepository::class);
-        $userId = 1;
+        $userId = $request->user()->getId();
 
         return [
             ProductInterface::ID => $this->getId(),

@@ -66,6 +66,8 @@ class ReviewVoteController extends Controller
         AddReviewVoteRequest $request
     ): JsonResponse|ReviewVoteResource
     {
+        abort_if(!$product->getPublished(), 404);
+
         $result = $this->repository->store(
             collect($request->validated())
                 ->put(ReviewVoteInterface::USER_ID, $request->user()->getId())

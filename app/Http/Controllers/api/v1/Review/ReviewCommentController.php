@@ -66,6 +66,8 @@ class ReviewCommentController extends Controller
         AddReviewCommentRequest $request
     ): JsonResponse|ReviewCommentResource
     {
+        abort_if(!$product->getPublished(), 404);
+
         $result = $this->repository->store(
             collect($request->validated())
                 ->put(ReviewCommentInterface::USER_ID, $request->user()->getId())

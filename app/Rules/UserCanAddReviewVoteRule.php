@@ -19,7 +19,7 @@ class UserCanAddReviewVoteRule implements Rule
 
     public function passes($attribute, $value)
     {
-        return $this->product->userCanAddReviewComment(request()->user());
+        return $this->product->userCanAddReviewVote(request()->user());
     }
 
     public function message()
