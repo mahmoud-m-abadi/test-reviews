@@ -59,9 +59,9 @@ abstract class BaseRepository
 
     /**
      * @param array $data Data.
-     * @return BaseModelInterface
+     * @return array|BaseModelInterface
      */
-    public function store(array $data): BaseModelInterface
+    public function store(array $data): array|BaseModelInterface
     {
         // $this->model::createObject();
 

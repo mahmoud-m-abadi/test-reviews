@@ -10,12 +10,9 @@ use App\Interfaces\Traits\HasTitleInterface;
 use App\Interfaces\Traits\HasUserIdInterface;
 
 interface ReviewCommentInterface extends
-    HasIdInterface,
-    HasUserIdInterface,
-    HasProductIdInterface,
+    ReviewInterface,
     HasTitleInterface,
-    HasBodyInterface,
-    HasApprovedInterface
+    HasBodyInterface
 {
     const TABLE = 'review_comments';
 

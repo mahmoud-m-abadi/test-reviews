@@ -4,6 +4,7 @@ namespace App\Http\Requests\v1\Review;
 
 use App\Base\BaseRequest;
 use App\Interfaces\Models\ReviewVoteInterface;
+use App\Rules\UserCanAddReviewVoteRule;
 
 class AddReviewVoteRequest extends BaseRequest
 {
@@ -14,6 +15,7 @@ class AddReviewVoteRequest extends BaseRequest
                 'required',
                 'int',
                 'between:1,5',
+                new UserCanAddReviewVoteRule($this->product)
             ],
         ];
     }

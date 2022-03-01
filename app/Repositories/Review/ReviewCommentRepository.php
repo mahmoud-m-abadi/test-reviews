@@ -3,12 +3,17 @@
 namespace App\Repositories\Review;
 
 use App\Base\BaseRepository;
+use App\Events\Reviews\UserAddedReviewCommentEvent;
+use App\Events\Reviews\UserReviewApprovedEvent;
+use App\Http\Controllers\Controller;
 use App\Interfaces\Models\BaseModelInterface;
 use App\Interfaces\Models\ReviewCommentInterface;
+use App\Interfaces\Models\ReviewInterface;
 use App\Models\Review\ReviewComment;
 use App\Repositories\ProductRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Container\Container as Application;
+use Illuminate\Support\Facades\DB;
 
 class ReviewCommentRepository extends BaseRepository
 {
@@ -36,29 +41,48 @@ class ReviewCommentRepository extends BaseRepository
 
     /**
      * @param $data
-     * @return BaseModelInterface
+     * @return array|BaseModelInterface
      */
-    public function store($data): BaseModelInterface
+    public function store($data): array|BaseModelInterface
     {
-        return $this->model::createObject(
-            $this->userRepository->find($data[ReviewCommentInterface::USER_ID]),
-            $this->productRepository->find($data[ReviewCommentInterface::PRODUCT_ID]),
-            $data[ReviewCommentInterface::TITLE],
-            $data[ReviewCommentInterface::BODY],
-        );
+         DB::beginTransaction();
+
+         try {
+             $comment = $this->model::createObject(
+                 $this->userRepository->find($data[ReviewCommentInterface::USER_ID]),
+                 $this->productRepository->find($data[ReviewCommentInterface::PRODUCT_ID]),
+                 $data[ReviewCommentInterface::TITLE],
+                 $data[ReviewCommentInterface::BODY],
+             );
+
+             event(new UserAddedReviewCommentEvent($comment));
+         } catch (\Exception $e) {
+             DB::rollBack();
+
+             return [
+                 'errors' => true,
+                 Controller::EXCEPTION_MESSAGE => $e->getMessage()
+             ];
+         }
+         DB::commit();
+
+        return $comment;
     }
 
     /**
-     * @param ReviewComment $reviewComment
+     * @param ReviewInterface $review
      * @param bool $value Value.
      *
-     * @return ReviewCommentInterface
+     * @return ReviewInterface
      */
     public function changeApprove(
-        ReviewComment $reviewComment,
+        ReviewInterface $review,
         bool $value
-    ): ReviewCommentInterface
+    ): ReviewInterface
     {
-        return $reviewComment->changeApprove($value);
+        $review = $review->changeApprove($value);
+        event(new UserReviewApprovedEvent($review));
+
+        return $review;
     }
 }

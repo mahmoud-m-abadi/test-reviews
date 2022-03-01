@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Interfaces\Models\ProductInterface;
+use App\Interfaces\Models\UserInterface;
+use App\Interfaces\Models\ProviderInterface;
 
 return new class extends Migration
 {
@@ -18,9 +20,9 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId(ProductInterface::CREATOR_ID)
-                ->constrained(\App\Interfaces\Models\UserInterface::TABLE);
+                ->constrained(UserInterface::TABLE);
             $table->foreignId(ProductInterface::PROVIDER_ID)
-                ->constrained(\App\Interfaces\Models\ProviderInterface::TABLE);
+                ->constrained(ProviderInterface::TABLE);
 
             $table->string(ProductInterface::NAME)->index();
 

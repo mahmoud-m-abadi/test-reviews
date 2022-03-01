@@ -24,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        /** Login user */
+        auth()->loginUsingId(1);
+
         Request::macro('isClient', function () {
            return request()->segment(3) == 'client';
         });

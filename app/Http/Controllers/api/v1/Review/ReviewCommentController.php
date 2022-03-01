@@ -58,19 +58,27 @@ class ReviewCommentController extends Controller
     /**
      * @param Product $product
      * @param AddReviewCommentRequest $request
-     * @return ReviewCommentResource
+     *
+     * @return JsonResponse|ReviewCommentResource
      */
     public function clientAddReview(
         Product $product,
         AddReviewCommentRequest $request
-    )
+    ): JsonResponse|ReviewCommentResource
     {
         $result = $this->repository->store(
             collect($request->validated())
-                ->put(ReviewCommentInterface::USER_ID, 1)
+                ->put(ReviewCommentInterface::USER_ID, $request->user()->getId())
                 ->put(ReviewCommentInterface::PRODUCT_ID, $product->getId())
                 ->toArray()
         );
+
+        if (isset($result['errors']) AND $result['errors'] == true) {
+            return $this->getResponse(
+                $result,
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
 
         return new ReviewCommentResource($result);
     }

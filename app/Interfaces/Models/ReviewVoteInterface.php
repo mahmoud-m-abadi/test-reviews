@@ -9,11 +9,8 @@ use App\Interfaces\Traits\HasRatingInterface;
 use App\Interfaces\Traits\HasUserIdInterface;
 
 interface ReviewVoteInterface extends
-    HasIdInterface,
-    HasUserIdInterface,
-    HasProductIdInterface,
-    HasRatingInterface,
-    HasApprovedInterface
+    ReviewInterface,
+    HasRatingInterface
 {
     const TABLE = 'review_votes';
 

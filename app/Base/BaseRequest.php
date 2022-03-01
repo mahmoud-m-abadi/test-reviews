@@ -36,6 +36,7 @@ class BaseRequest extends FormRequest implements BaseRequestInterface
                 [
                     'data' => null,
                     'errors' => $validator->errors(),
+                    Controller::EXCEPTION_MESSAGE => null
                 ],
                 Response::HTTP_UNPROCESSABLE_ENTITY
             )

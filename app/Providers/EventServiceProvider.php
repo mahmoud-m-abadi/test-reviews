@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Listeners\ReviewEventListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,6 +19,14 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+    ];
+
+    /**
+     * Subscribe event listeners
+     * @var string[]
+     */
+    protected $subscribe = [
+        ReviewEventListener::class
     ];
 
     /**

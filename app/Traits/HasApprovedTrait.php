@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-use App\Interfaces\Traits\HasApprovedInterface;
+use App\Interfaces\Models\ReviewInterface;
 use Illuminate\Database\Eloquent\Builder;
 
 trait HasApprovedTrait
@@ -19,9 +19,9 @@ trait HasApprovedTrait
     /**
      * @param bool $approve Approve.
      *
-     * @return HasApprovedInterface
+     * @return ReviewInterface
      */
-    public function changeApprove(bool $approve = true): HasApprovedInterface
+    public function changeApprove(bool $approve = true): ReviewInterface
     {
         $this->setApproved($approve);
         $this->save();

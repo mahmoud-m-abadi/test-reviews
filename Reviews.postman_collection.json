@@ -1,0 +1,2137 @@
+{
+	"info": {
+		"_postman_id": "acbe6daf-9fcb-4a6f-baad-8ea82671833d",
+		"name": "Reviews",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Manager",
+			"item": [
+				{
+					"name": "Reviews",
+					"item": [
+						{
+							"name": "Comments",
+							"item": [
+								{
+									"name": "ReviewCommentList",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{URL}}manager/review-comments",
+											"host": [
+												"{{URL}}manager"
+											],
+											"path": [
+												"review-comments"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "ReviewCommentList 200",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{URL}}manager/review-comments",
+													"host": [
+														"{{URL}}manager"
+													],
+													"path": [
+														"review-comments"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "localhost:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Mon, 28 Feb 2022 17:05:01 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Mon, 28 Feb 2022 17:05:01 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.0.15"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "54"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"user_id\": 1,\n            \"product_id\": 1,\n            \"title\": \"Hi r\",\n            \"body\": \"This is a best product\",\n            \"approved\": 1\n        }\n    ]\n}"
+										}
+									]
+								},
+								{
+									"name": "ReviewCommentApprove",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"approved\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL}}manager/review-comments/4/approve",
+											"host": [
+												"{{URL}}manager"
+											],
+											"path": [
+												"review-comments",
+												"4",
+												"approve"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "ReviewCommentApprove 422",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"approved\": 544\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{URL}}manager/review-comments/1/approve",
+													"host": [
+														"{{URL}}manager"
+													],
+													"path": [
+														"review-comments",
+														"1",
+														"approve"
+													]
+												}
+											},
+											"status": "Unprocessable Content",
+											"code": 422,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "localhost:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Mon, 28 Feb 2022 16:57:13 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Mon, 28 Feb 2022 16:57:13 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.0.15"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": null,\n    \"errors\": {\n        \"approved\": [\n            \"The approved field must be true or false.\"\n        ]\n    }\n}"
+										},
+										{
+											"name": "ReviewCommentApprove 204",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"approved\": true\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{URL}}manager/review-comments/1/approve",
+													"host": [
+														"{{URL}}manager"
+													],
+													"path": [
+														"review-comments",
+														"1",
+														"approve"
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "plain",
+											"header": [
+												{
+													"key": "Host",
+													"value": "localhost:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Mon, 28 Feb 2022 17:01:16 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Mon, 28 Feb 2022 17:01:16 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.0.15"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "57"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": null
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Votes",
+							"item": [
+								{
+									"name": "ReviewVoteList",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{URL}}manager/review-votes",
+											"host": [
+												"{{URL}}manager"
+											],
+											"path": [
+												"review-votes"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "ReviewVoteList 200",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{URL}}manager/review-votes",
+													"host": [
+														"{{URL}}manager"
+													],
+													"path": [
+														"review-votes"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "localhost:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Mon, 28 Feb 2022 17:04:42 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Mon, 28 Feb 2022 17:04:42 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.0.15"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "55"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"user_id\": 1,\n            \"product_id\": 1,\n            \"rating\": 4,\n            \"approved\": 1\n        }\n    ]\n}"
+										}
+									]
+								},
+								{
+									"name": "ReviewVoteApprove",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"approved\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL}}manager/review-votes/1/approve",
+											"host": [
+												"{{URL}}manager"
+											],
+											"path": [
+												"review-votes",
+												"1",
+												"approve"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "ReviewVoteApprove 422",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"approved\": 545\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{URL}}manager/review-votes/1/approve",
+													"host": [
+														"{{URL}}manager"
+													],
+													"path": [
+														"review-votes",
+														"1",
+														"approve"
+													]
+												}
+											},
+											"status": "Unprocessable Content",
+											"code": 422,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "localhost:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Mon, 28 Feb 2022 17:02:57 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Mon, 28 Feb 2022 17:02:57 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.0.15"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "57"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": null,\n    \"errors\": {\n        \"approved\": [\n            \"The approved field must be true or false.\"\n        ]\n    }\n}"
+										},
+										{
+											"name": "ReviewVoteApprove 200",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"approved\": true\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{URL}}manager/review-votes/1/approve",
+													"host": [
+														"{{URL}}manager"
+													],
+													"path": [
+														"review-votes",
+														"1",
+														"approve"
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "plain",
+											"header": [
+												{
+													"key": "Host",
+													"value": "localhost:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Mon, 28 Feb 2022 17:04:32 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Mon, 28 Feb 2022 17:04:32 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.0.15"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "56"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": null
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "ProductList",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}manager/products",
+									"host": [
+										"{{URL}}manager"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ProductList 200",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{URL}}manager/products",
+											"host": [
+												"{{URL}}manager"
+											],
+											"path": [
+												"products"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "localhost:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 28 Feb 2022 17:05:14 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 28 Feb 2022 17:05:14 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.0.15"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Hollis Corwin\",\n            \"price\": 10491,\n            \"published\": true,\n            \"enable_vote\": true,\n            \"enable_comment\": true,\n            \"enable_review_for_buyer\": true\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Ms. Emma Mosciski\",\n            \"price\": 20701,\n            \"published\": true,\n            \"enable_vote\": true,\n            \"enable_comment\": false,\n            \"enable_review_for_buyer\": true\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Jefferey Waelchi\",\n            \"price\": 40660,\n            \"published\": false,\n            \"enable_vote\": true,\n            \"enable_comment\": true,\n            \"enable_review_for_buyer\": true\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Stefan Bednar\",\n            \"price\": 4736,\n            \"published\": true,\n            \"enable_vote\": true,\n            \"enable_comment\": true,\n            \"enable_review_for_buyer\": true\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Ms. Maryse Cole II\",\n            \"price\": 32031,\n            \"published\": false,\n            \"enable_vote\": false,\n            \"enable_comment\": true,\n            \"enable_review_for_buyer\": false\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Arden Hegmann\",\n            \"price\": 10743,\n            \"published\": false,\n            \"enable_vote\": false,\n            \"enable_comment\": false,\n            \"enable_review_for_buyer\": false\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Prof. Theo Crist\",\n            \"price\": 28364,\n            \"published\": true,\n            \"enable_vote\": false,\n            \"enable_comment\": false,\n            \"enable_review_for_buyer\": true\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Mrs. Faye Bednar\",\n            \"price\": 20520,\n            \"published\": false,\n            \"enable_vote\": true,\n            \"enable_comment\": false,\n            \"enable_review_for_buyer\": true\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Gaylord Parker\",\n            \"price\": 18105,\n            \"published\": true,\n            \"enable_vote\": true,\n            \"enable_comment\": true,\n            \"enable_review_for_buyer\": true\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Prof. Darron Bernier V\",\n            \"price\": 20510,\n            \"published\": true,\n            \"enable_vote\": true,\n            \"enable_comment\": true,\n            \"enable_review_for_buyer\": false\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://localhost:8000/api/v1/manager/products?page=1\",\n        \"last\": \"http://localhost:8000/api/v1/manager/products?page=1\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 1,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/manager/products?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://localhost:8000/api/v1/manager/products\",\n        \"per_page\": 15,\n        \"to\": 10,\n        \"total\": 10\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "ProductShow",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}manager/products/1",
+									"host": [
+										"{{URL}}manager"
+									],
+									"path": [
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ProductShow 200",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{URL}}manager/products/1",
+											"host": [
+												"{{URL}}manager"
+											],
+											"path": [
+												"products",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "localhost:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 28 Feb 2022 17:05:22 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 28 Feb 2022 17:05:22 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.0.15"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Hollis Corwin\",\n        \"price\": 10491,\n        \"published\": true,\n        \"enable_vote\": true,\n        \"enable_comment\": true,\n        \"enable_review_for_buyer\": true,\n        \"reviewComments\": [\n            {\n                \"id\": 1,\n                \"user_id\": 1,\n                \"product_id\": 1,\n                \"title\": \"Hi r\",\n                \"body\": \"This is a best product\",\n                \"approved\": 1\n            }\n        ],\n        \"reviewVotes\": [\n            {\n                \"id\": 1,\n                \"user_id\": 1,\n                \"product_id\": 1,\n                \"rating\": 4,\n                \"approved\": 1\n            }\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "PublishProduct",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"published\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}manager/products/1/publish",
+									"host": [
+										"{{URL}}manager"
+									],
+									"path": [
+										"products",
+										"1",
+										"publish"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "PublishProduct 204",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"published\": false\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL}}manager/products/1/publish",
+											"host": [
+												"{{URL}}manager"
+											],
+											"path": [
+												"products",
+												"1",
+												"publish"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Host",
+											"value": "localhost:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 28 Feb 2022 14:32:47 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 28 Feb 2022 14:32:47 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.0.15"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "54"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": null
+								},
+								{
+									"name": "PublishProduct 422",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"published\": 5465\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL}}manager/products/1/publish",
+											"host": [
+												"{{URL}}manager"
+											],
+											"path": [
+												"products",
+												"1",
+												"publish"
+											]
+										}
+									},
+									"status": "Unprocessable Content",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "localhost:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 28 Feb 2022 14:51:47 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 28 Feb 2022 14:51:47 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.0.15"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": null,\n    \"errors\": {\n        \"published\": [\n            \"The published field must be true or false.\"\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "ProductEnableComment",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"enable_comment\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}manager/products/1/enable-comment",
+									"host": [
+										"{{URL}}manager"
+									],
+									"path": [
+										"products",
+										"1",
+										"enable-comment"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ProductEnableComment 204",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"enable_comment\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL}}manager/products/1/enable-comment",
+											"host": [
+												"{{URL}}manager"
+											],
+											"path": [
+												"products",
+												"1",
+												"enable-comment"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Host",
+											"value": "localhost:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 28 Feb 2022 14:32:36 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 28 Feb 2022 14:32:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.0.15"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "55"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": null
+								},
+								{
+									"name": "ProductEnableComment 422",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"enable_comment\": 65465\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL}}manager/products/1/enable-comment",
+											"host": [
+												"{{URL}}manager"
+											],
+											"path": [
+												"products",
+												"1",
+												"enable-comment"
+											]
+										}
+									},
+									"status": "Unprocessable Content",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "localhost:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 28 Feb 2022 14:51:18 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 28 Feb 2022 14:51:18 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.0.15"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": null,\n    \"errors\": {\n        \"enable_comment\": [\n            \"The enable comment field must be true or false.\"\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "ProductEnableVote",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"enable_vote\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}manager/products/1/enable-vote",
+									"host": [
+										"{{URL}}manager"
+									],
+									"path": [
+										"products",
+										"1",
+										"enable-vote"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ProductEnableVote 204",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"enable_vote\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL}}manager/products/1/enable-vote",
+											"host": [
+												"{{URL}}manager"
+											],
+											"path": [
+												"products",
+												"1",
+												"enable-vote"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Host",
+											"value": "localhost:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 28 Feb 2022 14:33:33 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 28 Feb 2022 14:33:33 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.0.15"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": null
+								},
+								{
+									"name": "ProductEnableVote 422",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"enable_vote\": 4654\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL}}manager/products/1/enable-vote",
+											"host": [
+												"{{URL}}manager"
+											],
+											"path": [
+												"products",
+												"1",
+												"enable-vote"
+											]
+										}
+									},
+									"status": "Unprocessable Content",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "localhost:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 28 Feb 2022 14:49:51 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 28 Feb 2022 14:49:51 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.0.15"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": null,\n    \"errors\": {\n        \"enable_vote\": [\n            \"The enable vote field must be true or false.\"\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "ProductEnableReviewForBuyer",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"enable_review_for_buyer\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}manager/products/1/enable-review-for-buyer",
+									"host": [
+										"{{URL}}manager"
+									],
+									"path": [
+										"products",
+										"1",
+										"enable-review-for-buyer"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ProductEnableReviewForBuyer 204",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"enable_review_for_buyer\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL}}manager/products/1/enable-review-for-buyer",
+											"host": [
+												"{{URL}}manager"
+											],
+											"path": [
+												"products",
+												"1",
+												"enable-review-for-buyer"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Host",
+											"value": "localhost:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 28 Feb 2022 14:34:31 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 28 Feb 2022 14:34:31 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.0.15"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": null
+								},
+								{
+									"name": "ProductEnableReviewForBuyer 422",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"enable_review_for_buyer\": 4654\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL}}manager/products/1/enable-review-for-buyer",
+											"host": [
+												"{{URL}}manager"
+											],
+											"path": [
+												"products",
+												"1",
+												"enable-review-for-buyer"
+											]
+										}
+									},
+									"status": "Unprocessable Content",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "localhost:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 28 Feb 2022 14:50:42 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 28 Feb 2022 14:50:42 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.0.15"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": null,\n    \"errors\": {\n        \"enable_review_for_buyer\": [\n            \"The enable review for buyer field must be true or false.\"\n        ]\n    }\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "ProductList",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}client/products",
+							"host": [
+								"{{URL}}client"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ProductList 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}client/products",
+									"host": [
+										"{{URL}}client"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 28 Feb 2022 14:17:38 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 28 Feb 2022 14:17:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.15"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 2,\n            \"name\": \"Ms. Emma Mosciski\",\n            \"price\": 20701,\n            \"approvedReviewComments\": [],\n            \"approvedVotesAvg\": 0,\n            \"userCanAddReviewComment\": false,\n            \"userCanAddReviewVote\": true\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Stefan Bednar\",\n            \"price\": 4736,\n            \"approvedReviewComments\": [],\n            \"approvedVotesAvg\": 0,\n            \"userCanAddReviewComment\": true,\n            \"userCanAddReviewVote\": true\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Prof. Theo Crist\",\n            \"price\": 28364,\n            \"approvedReviewComments\": [],\n            \"approvedVotesAvg\": 0,\n            \"userCanAddReviewComment\": false,\n            \"userCanAddReviewVote\": false\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Gaylord Parker\",\n            \"price\": 18105,\n            \"approvedReviewComments\": [],\n            \"approvedVotesAvg\": 0,\n            \"userCanAddReviewComment\": true,\n            \"userCanAddReviewVote\": true\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Prof. Darron Bernier V\",\n            \"price\": 20510,\n            \"approvedReviewComments\": [],\n            \"approvedVotesAvg\": 0,\n            \"userCanAddReviewComment\": true,\n            \"userCanAddReviewVote\": true\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://localhost:8000/api/v1/client/products?page=1\",\n        \"last\": \"http://localhost:8000/api/v1/client/products?page=1\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 1,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/v1/client/products?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://localhost:8000/api/v1/client/products\",\n        \"per_page\": 15,\n        \"to\": 5,\n        \"total\": 5\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "ProductShow",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}client/products/2",
+							"host": [
+								"{{URL}}client"
+							],
+							"path": [
+								"products",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ProductShow 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}client/products/2",
+									"host": [
+										"{{URL}}client"
+									],
+									"path": [
+										"products",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 28 Feb 2022 14:18:19 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 28 Feb 2022 14:18:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.15"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 2,\n        \"name\": \"Ms. Emma Mosciski\",\n        \"price\": 20701,\n        \"approvedReviewComments\": [],\n        \"approvedVotesAvg\": 0,\n        \"userCanAddReviewComment\": false,\n        \"userCanAddReviewVote\": true\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "ProductAddReviewComment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Hi test another 2\",\n    \"body\": \"This is a best product\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}client/products/1/add-review-comment",
+							"host": [
+								"{{URL}}client"
+							],
+							"path": [
+								"products",
+								"1",
+								"add-review-comment"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ProductAddReviewComment 200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Hi r\",\n    \"body\": \"This is a best product\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}client/products/1/add-review-comment",
+									"host": [
+										"{{URL}}client"
+									],
+									"path": [
+										"products",
+										"1",
+										"add-review-comment"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 28 Feb 2022 16:47:07 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 28 Feb 2022 16:47:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.15"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"user_id\": 1,\n        \"product_id\": 1,\n        \"title\": \"Hi r\",\n        \"body\": \"This is a best product\",\n        \"approved\": false\n    }\n}"
+						},
+						{
+							"name": "ProductAddReviewComment 422",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Hi\",\n    \"body\": \"This is a best product\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}client/products/1/add-review-comment",
+									"host": [
+										"{{URL}}client"
+									],
+									"path": [
+										"products",
+										"1",
+										"add-review-comment"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 28 Feb 2022 16:48:12 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 28 Feb 2022 16:48:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.15"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"errors\": {\n        \"title\": [\n            \"The title must be at least 3 characters.\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "ProductAddReviewVote",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rating\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}client/products/1/add-review-vote",
+							"host": [
+								"{{URL}}client"
+							],
+							"path": [
+								"products",
+								"1",
+								"add-review-vote"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ProductAddReviewVote 422",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"rating\": 6\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}client/products/1/add-review-vote",
+									"host": [
+										"{{URL}}client"
+									],
+									"path": [
+										"products",
+										"1",
+										"add-review-vote"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 28 Feb 2022 16:50:51 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 28 Feb 2022 16:50:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.15"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"errors\": {\n        \"rating\": [\n            \"The rating must be between 1 and 5.\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "ProductAddReviewVote 200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"rating\": 4\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}client/products/1/add-review-vote",
+									"host": [
+										"{{URL}}client"
+									],
+									"path": [
+										"products",
+										"1",
+										"add-review-vote"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 28 Feb 2022 16:51:23 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 28 Feb 2022 16:51:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.15"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"user_id\": 1,\n        \"product_id\": 1,\n        \"rating\": 4,\n        \"approved\": false\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -2,6 +2,7 @@
 
 namespace App\Interfaces\Traits;
 
+use App\Interfaces\Models\ReviewInterface;
 use Illuminate\Database\Eloquent\Builder;
 
 interface HasApprovedInterface
@@ -19,7 +20,7 @@ interface HasApprovedInterface
     /**
      * @param bool $approve Approve.
      *
-     * @return HasApprovedInterface
+     * @return ReviewInterface
      */
-    public function changeApprove(bool $approve = true): HasApprovedInterface;
+    public function changeApprove(bool $approve = true): ReviewInterface;
 }

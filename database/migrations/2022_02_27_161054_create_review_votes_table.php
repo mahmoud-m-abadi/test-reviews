@@ -4,6 +4,9 @@ use App\Interfaces\Models\ReviewVoteInterface;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Interfaces\Models\ProductInterface;
+use App\Interfaces\Models\UserInterface;
+use Illuminate\Database\Eloquent\Model;
 
 return new class extends Migration
 {
@@ -18,9 +21,9 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId(ReviewVoteInterface::USER_ID)
-                ->constrained(\App\Interfaces\Models\UserInterface::TABLE);
+                ->constrained(UserInterface::TABLE);
             $table->foreignId(ReviewVoteInterface::PRODUCT_ID)
-                ->constrained(\App\Interfaces\Models\ProductInterface::TABLE);
+                ->constrained(ProductInterface::TABLE);
 
             $table->tinyInteger(ReviewVoteInterface::RATING)->nullable();
 
@@ -28,7 +31,7 @@ return new class extends Migration
                 ->index()
                 ->default(ReviewVoteInterface::APPROVED_NO);
 
-            $table->timestamp(\Illuminate\Database\Eloquent\Model::CREATED_AT)->nullable();
+            $table->timestamp(Model::CREATED_AT)->nullable();
         });
     }
 

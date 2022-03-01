@@ -38,9 +38,9 @@ class ProductRepository extends BaseRepository
     /**
      * @param array $data Data.
      *
-     * @return BaseModelInterface
+     * @return array|BaseModelInterface
      */
-    public function store(array $data): BaseModelInterface
+    public function store(array $data): array|BaseModelInterface
     {
         return $this->model::createObject(
             $this->userRepository->find($data[ProductInterface::CREATOR_ID]),
