@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if ($this->app->environment() != 'testing') {
+        if ($this->app->environment() != 'testing' AND request()->expectsJson()) {
             /** Login user */
             auth()->loginUsingId(1);
         }
