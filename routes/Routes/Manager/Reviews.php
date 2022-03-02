@@ -11,6 +11,6 @@ Route::resource('review-comments', ReviewCommentController::class)
 
 /** Review Votes */
 Route::put('review-votes/{reviewVote}/approve', [ReviewVoteController::class, 'approve'])
-    ->name('review.votes.approve');
+    ->name('reviews.votes.approve');
 Route::resource('review-votes', ReviewVoteController::class)
     ->only(['index']);

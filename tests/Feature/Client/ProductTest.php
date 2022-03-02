@@ -23,15 +23,17 @@ class ProductTest extends TestCase
         );
     }
 
-    public function test_client_get_product_list()
+    public function test_client_can_see_all_published_product_list()
     {
-        Product::factory($count = 10)->create();
+        Product::factory($count = 10)->create([
+            ProductInterface::PUBLISHED => true
+        ]);
 
-        $this->getJson(route('products.clientProductList'));
-        $this->assertDatabaseCount(ProductInterface::TABLE, $count);
+        $this->getJson(route('products.clientProductList'))
+            ->assertJsonCount(10, 'data');
     }
 
-    public function test_client_can_get_a_product_successfully()
+    public function test_client_can_get_a_published_product_successfully()
     {
         $product = Product::factory()->create([ProductInterface::PUBLISHED => true]);
 
